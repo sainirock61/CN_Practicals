@@ -1,0 +1,43 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+ void sumo(int l,int *entry)
+   { int r,j;
+    for(j=0;j<l;j++)
+    {
+        cout<<"Sender's End: \n"<<"Packet number "<<j+1<<" is sent with Data: "<<entry[j];
+
+        r=rand()%2;
+        if(r==1)
+             {
+             cout<<endl<<"  Acknowledgement number "<<(j+1)<<" is sent\n";
+             }
+
+          else
+             {
+               cout<<endl<<"  Timeout"<<endl<<"Resend"<<endl<<"No acknowledgement received"<<endl;
+               cout<<"  Frame is sent again\n";
+               j--;
+
+             }
+    }
+    cout<<"\nPROTOCOL ENDS\n";
+
+
+}
+
+int main(){
+   int frames,i;
+   int *entry= new int[20];
+   cout<<"STOP AND WAIT PROTOCOL EXECUTION \n";
+   cout<<"Enter the number of frames to send   ";
+   cin>>frames;
+   for(i=0;i<frames;i++)
+   {
+     cin>>entry[i];
+   }
+    cout<<endl;
+    sumo(frames,entry);
+   return 0;
+}

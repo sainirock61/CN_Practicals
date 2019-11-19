@@ -1,0 +1,37 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+  void sumo(int n)
+   {  int i, sent=0,ack;
+   while(1){
+     for(i=0;i<n;i++)
+      {
+         cout<<"\nFrame "<<(sent+1)<<"has been transmitted.";
+         sent++;
+         if(sent==n)
+         {
+         break;
+         }
+      }
+     ack=rand()%n+1;
+     cout<<"\nLast ack received: "<<ack+1;
+     if(ack==n)
+       {
+       break;
+       }
+     else
+      {
+       sent=ack;
+      }
+  }
+   }
+   
+int main()
+{
+   int n;
+   cout<<"Enter the window size: ";
+   cin>>n;
+   sumo(n);
+   return 0;
+}

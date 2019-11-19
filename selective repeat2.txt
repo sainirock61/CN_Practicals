@@ -1,0 +1,49 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+  void sumo(int l,int z)
+  {
+    int i, p,nac,ack;
+
+   cout<<"\nTransmission begins"<<endl<<"Packet size is: "<<l<<endl;
+  for(i=1;i<=l;)
+
+    {
+    cout<<"\nSending packets from "<<i<<" to "<<z+i-1<<endl;
+    for(p=i;p<=z;p++)
+    {
+      cout<<"\nTransmitting packet "<<p;
+    }
+
+    nac=rand()%4;
+    if(nac==i)
+    {
+      cout<<"Ack= "<<z+i;
+      i=z+i;
+      continue;
+    }
+    cout<<"\nNACK= "<<nac;
+    cout<<"\nSending packet: "<<nac;
+    cout<<"\nAck= "<<nac+i;
+    cout<<"\nAck= "<<i+z;
+    i=i+z;
+
+   }
+
+  }
+
+ int main()
+   {
+
+  int a,ws;
+
+  cout<<"Enter the packet size: ";
+  cin>>a;
+
+  cout<<"Enter the window size: ";
+  cin>>ws;
+    sumo(a,ws);
+   return 0;
+ }
+
